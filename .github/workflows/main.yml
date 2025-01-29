@@ -1,0 +1,22 @@
+name: CI Pipeline
+
+on: [push, pull_request]  # Trigger workflow on push and PR
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use Ubuntu as the runner
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3  # Fetch latest code
+
+    - name: Set Up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Dependencies
+      run: npm install  # Install project dependencies
+
+    - name: Run Tests
+      run: npm test  # Run automated tests
